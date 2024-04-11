@@ -38,23 +38,23 @@ char* findSpaceReverse(char *rbegin, const char *rend);
 // равны, иначе – положительное значение.
 int strcmp_(const char *lhs, const char *rhs);
 
-// записывает по адресу beginDestination
-// фрагмент памяти, начиная с адреса beginSource до endSource.
+// записывает по адресу begin_destination
+// фрагмент памяти, начиная с адреса begin_source до end_source.
 // Возвращает указатель на следующий свободный фрагмент памяти в destination
-char* copy(const char *beginSource, const char *endSource,
-           char *beginDestination);
+char* copy(const char *begin_source, const char *end_source,
+           char *begin_destination);
 
-// записывает по адресу beginDestination элементы из фрагмента памяти начиная с beginSource
-// заканчивая endSource, удовлетворяющие функции-предикату f. Функция возвращает
+// записывает по адресу begin_destination элементы из фрагмента памяти начиная с begin_source
+// заканчивая end_source, удовлетворяющие функции-предикату f. Функция возвращает
 // указатель на следующий свободный для записи фрагмент в памяти.
-char* copyIf(char *beginSource, const char *endSource,
-             char *beginDestination, int (*f)(int));
+char* copyIf(char *begin_source, const char *end_source,
+             char *begin_destination, int (*f)(int));
 
-// записывает по адресу beginDestination элементы из фрагмента памяти
-// начиная с rbeginSource заканчивая rendSource, удовлетворяющие функции-предикату f.
-// Функция возвращает значение beginDestination по окончанию работы функции.
-char* copyIfReverse(char *rbeginSource, const char *rendSource,
-                    char *beginDestination, int (*f)(int));
+// записывает по адресу begin_destination элементы из фрагмента памяти
+// начиная с rbegin_source заканчивая rend_source, удовлетворяющие функции-предикату f.
+// Функция возвращает значение begin_destination по окончанию работы функции.
+char* copyIfReverse(char *rbegin_source, const char *rend_source,
+                    char *begin_destination, int (*f)(int));
 
 
 #endif //STR_STRING_LIBRARY_H
