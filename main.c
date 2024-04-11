@@ -74,29 +74,44 @@ void test_strcmp_() {
 
 
 void test_copy() {
-    char *str_copy;
-    char *pc = copy(str4, str4 + 25, str_copy);
-    assert(strcmp_(str4, str_copy) == 0);
-    assert(pc == str_copy + 25);
+    char string[] = "Chainsaw";
+    char new_string[4];
+    copy(string, string + 3, new_string);
+
+    char res[] = "Cha";
+    assert(strcmp_(new_string, res) == 0);
 }
 
 
 void test_copyIf() {
-    char *str_copy;
-    char *pc = copyIf(str8, str8 + 27, str_copy, isupper);
-    assert(memcmp(str_copy, "TTCM", 4) == 0);
+    char str[] = "1a45";
+    char str_copy[4];
+    copyIf(str, str + 3, str_copy, isdigit);
+
+    char res[] = "14";
+    assert(strcmp_(str_copy, res) == 0);
 }
 
 
 void test_copyIfReverse() {
-    char *str_copy;
-    char *pc = copyIf(str8, str8 + 27, str_copy, isupper);
-    assert(memcmp(str_copy, "MCTT", 4) == 0);
+    char str[] = "1a45";
+    char str_copy[3];
+    copyIfReverse(str + 3, str, str_copy, isdigit);
+
+    char res[] = "54";
+    assert(strcmp_(str_copy, res) == 0);
+}
+
+
+void test() {
+    test_copy();
+    test_copyIf();
+    test_copyIfReverse();
 }
 
 
 int main() {
-    test_findNonSpace();
+    test();
 
     return 0;
 }
