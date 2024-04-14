@@ -78,8 +78,6 @@ char *copyIf(char *begin_source, const char *end_source, char *begin_destination
         begin_source++;
     }
 
-    *begin_destination = '\0';
-
     return begin_destination;
 }
 
@@ -93,8 +91,6 @@ char *copyIfReverse(char *rbegin_source, const char *rend_source, char *begin_de
 
         rbegin_source--;
     }
-
-    *begin_destination = '\0';
 
     return begin_destination;
 }

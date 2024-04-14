@@ -89,7 +89,7 @@ void test_copyIf() {
     copyIf(str, str + 3, str_copy, isdigit);
 
     char res[] = "14";
-    assert(strcmp_(str_copy, res) == 0);
+    assert(memcmp(str_copy, res, 2) == 0);
 }
 
 
@@ -99,7 +99,7 @@ void test_copyIfReverse() {
     copyIfReverse(str + 3, str, str_copy, isdigit);
 
     char res[] = "54";
-    assert(strcmp_(str_copy, res) == 0);
+    assert(memcmp(str_copy, res, 2) == 0);
 }
 
 
