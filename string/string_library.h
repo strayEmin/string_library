@@ -56,5 +56,11 @@ char* copyIf(char *begin_source, const char *end_source,
 char* copyIfReverse(char *rbegin_source, const char *rend_source,
                     char *begin_destination, int (*f)(int));
 
+// функция обработки ошибок
+void assertString(const char *expected, char *got,
+                  char const *fileName, char const *funcName, int line);
+
+#define ASSERT_STRING(expected, got) assertString(expected, got, __FILE__, \
+__func__, __LINE__)
 
 #endif //STR_STRING_LIBRARY_H
