@@ -4,5 +4,7 @@
 
 void removeNonLetters(char *s);
 
+void removeExtraSpaces(char *s);
+
 
 #endif //PROJECT_TASKS_H

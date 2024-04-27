@@ -112,17 +112,27 @@ void test_string() {
 
 
 void test_removeNonLetters() {
-    char *s = "a b  l";
+    char s[] = "a b  l";
     removeNonLetters(s);
     ASSERT_STRING(s, "abl");
 }
 
 
+void test_removeExtraSpaces() {
+    char s[] = "The   Texas   Chainsaw   Massacre";
+    removeExtraSpaces(s);
+    ASSERT_STRING(s, "The Texas Chainsaw Massacre");
+}
 
+
+void test_tasks() {
+    test_removeNonLetters();
+    test_removeExtraSpaces();
+}
 
 
 int main() {
-    test_string();
+    test_tasks();
 }
 
 
