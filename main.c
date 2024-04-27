@@ -1,5 +1,6 @@
 #include "string/string_library.h"
 #include "assert.h"
+#include "string/tasks/tasks.h"
 
 
 char str1[] = ""; // len = 0
@@ -103,15 +104,25 @@ void test_copyIfReverse() {
 }
 
 
-void test() {
+void test_string() {
     test_copy();
     test_copyIf();
     test_copyIfReverse();
 }
 
 
-int main() {
-    test();
-
-    return 0;
+void test_removeNonLetters() {
+    char *s = "a b  l";
+    removeNonLetters(s);
+    ASSERT_STRING(s, "abl");
 }
+
+
+
+
+
+int main() {
+    test_string();
+}
+
+
