@@ -125,9 +125,25 @@ void test_removeExtraSpaces() {
 }
 
 
+void test_lettersToStartDigitsToEnd() {
+    char string1[] = "Th223e T322exas C232hainsaw Massacre";
+    char string2[] = " sp1ce  sp4ce  sp0ce";
+    char string3[] = "Ive missed all the deadlines";
+
+    forEachWord(string1, lettersToStartDigitsToEnd);
+    forEachWord(string2, lettersToStartDigitsToEnd);
+    forEachWord(string3, lettersToStartDigitsToEnd);
+
+    ASSERT_STRING("The223 Texas322 Chainsaw232 Massacre", string1);
+    ASSERT_STRING(" spce1  spce4  spce0", string2);
+    ASSERT_STRING("Ive missed all the deadlines", string3);
+}
+
+
 void test_tasks() {
     test_removeNonLetters();
     test_removeExtraSpaces();
+    test_lettersToStartDigitsToEnd();
 }
 
 
