@@ -42,21 +42,6 @@ int getWord(char *begin_search, word_descriptor_t* word) {
     return 1;
 }
 
-
-int getWordReverse(char* search_end, char* search_start, word_descriptor_t* word) {
-    word->end = findNonSpaceReverse(search_end, search_start) + 1;
-
-    if (word->end == search_end + 1) {
-        word->begin = search_start + 1;
-        return 0;
-    }
-
-    word->begin = findSpaceReverse(search_end, word->end - 1) + 1;
-
-    return 1;
-}
-
-
 void forEachWord(char* string, void (*function)(word_descriptor_t)) {
     char* search_point = string;
     word_descriptor_t word;
