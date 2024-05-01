@@ -280,21 +280,21 @@ void test_hasStrWordsFromEqualSymbols() {
 
 
 void test_getStrFromWordsNotEqualToTheLast() {
-    char s2[] = "HO HO HO HO";
-    char s3[] = "Chainsaw Man";
-    char s4[] = "aaa bbb ccc aaa";
+    char s1[] = "HO HO HO HO";
+    char s2[] = "Chainsaw Man";
+    char s3[] = "aaa bbb ccc aaa";
 
-    char res2[MAX_STRING_SIZE + 1];
-    char res3[MAX_STRING_SIZE + 1];
-    char res4[MAX_STRING_SIZE + 1];
+    char result1[MAX_STRING_SIZE + 1];
+    char result2[MAX_STRING_SIZE + 1];
+    char result3[MAX_STRING_SIZE + 1];
 
-    getStrFromWordsNotEqualToTheLast(s2, res2);
-    getStrFromWordsNotEqualToTheLast(s3, res3);
-    getStrFromWordsNotEqualToTheLast(s4, res4);
+    getStrFromWordsNotEqualToTheLast(s1, result1);
+    getStrFromWordsNotEqualToTheLast(s2, result2);
+    getStrFromWordsNotEqualToTheLast(s3, result3);
 
-    ASSERT_STRING(res2, "");
-    ASSERT_STRING(res3, "Chainsaw");
-    ASSERT_STRING(res4, "bbb ccc");
+    ASSERT_STRING(result1, "");
+    ASSERT_STRING(result2, "Chainsaw");
+    ASSERT_STRING(result3, "bbb ccc");
 }
 
 

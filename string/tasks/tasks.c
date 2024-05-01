@@ -415,8 +415,8 @@ bool hasStrWordsFromEqualSymbols(char *string) {
     return false;
 }
 
-
-void getStrFromWordsNotEqualToTheLast(char* string, char *result) {
+// task 15
+void getStrFromWordsNotEqualToTheLast(char *string, char *result) {
     getBagOfWords(string, &bag1);
     char *write_ptr = result;
 
@@ -433,11 +433,57 @@ void getStrFromWordsNotEqualToTheLast(char* string, char *result) {
 
     if (write_ptr == result) {
         *write_ptr = '\0';
-        
+
         return;
     }
 
     *(--write_ptr) = '\0';
 }
+
+// task16
+static bool isWordFound(char *string, word_descriptor_t word) {
+    word_descriptor_t current_word;
+
+    while (getWord(string, &current_word)) {
+        if (wordscmp(word, current_word) == 0) {
+            return true;
+        }
+
+        string = current_word.end;
+    }
+
+    return false;
+}
+
+
+WordBeforeFirstWordWithAReturnCode getWordBeforeFirstWordInBothStr(
+        char *string, char *word, word_descriptor_t *word_dst) {
+    word_descriptor_t previous_word;
+
+    if (getWord(string, &previous_word)) {
+        if (isWordFound(word, previous_word)) {
+            string = previous_word.end;
+            word_descriptor_t next_word;
+
+            while (getWord(string, &next_word)) {
+                if (isWordFound(word, next_word)) {
+                    *word_dst = previous_word;
+
+                    return WORD_FOUND;
+                }
+
+                previous_word = next_word;
+                string = previous_word.end;
+            }
+
+            return NOT_FOUND_A_WORD_WITH_A;
+        }
+
+        return FIRST_WORD_WITH_A;
+    }
+
+    return EMPTY_STRING;
+}
+
 
 
