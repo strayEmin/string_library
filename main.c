@@ -191,6 +191,14 @@ void test_printWordsInReverseOrder() {
 }
 
 
+void test_countPalindromes() {
+    char string1[] = "";
+    ASSERT_TRUE(countPalindromes(string1) == 0);
+    char string2[] = "potop, palindrom";
+    ASSERT_TRUE(countPalindromes(string2) == 1);
+}
+
+
 void test_tasks() {
     test_removeNonLetters();
     test_removeExtraSpaces();
@@ -199,6 +207,7 @@ void test_tasks() {
     test_replace();
     test_areWordsSorted();
     test_printWordsInReverseOrder();
+    test_countPalindromes();
 }
 
 

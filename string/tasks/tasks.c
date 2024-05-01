@@ -20,8 +20,8 @@ char* getEndOfString(char *s) {
 
 
 void removeNonLetters(char *s) {
-    char *endSource = getEndOfString(s);
-    char *destination = copyIf(s, endSource, s, isgraph);
+    char *end_source = getEndOfString(s);
+    char *destination = copyIf(s, end_source, s, isgraph);
     *destination = '\0';
 }
 
@@ -173,6 +173,7 @@ void printWord(word_descriptor_t word) {
     }
 }
 
+
 void printWordsInReverseOrder(char* string) {
     getBagOfWords(string, &bag1);
 
@@ -180,5 +181,39 @@ void printWordsInReverseOrder(char* string) {
         printWord(bag1.words[i]);
         putchar('\n');
     }
+    bag1.size = 0;
 }
 
+// task8
+static bool _isPalindrome(char *begin, char *end) {
+    end--;
+
+    if (*end == ',')
+        end--;
+
+    while (end > begin) {
+        if (*begin != *end)
+            return false;
+
+        begin++;
+        end--;
+    }
+
+    return true;
+}
+
+int countPalindromes(char* string) {
+    int count = 0;
+    char* search_ptr = string;
+    word_descriptor_t word;
+
+    while (getWord(search_ptr, &word)) {
+        if (_isPalindrome(word.begin, word.end)) {
+            count++;
+        }
+
+        search_ptr = word.end;
+    }
+
+    return count;
+}

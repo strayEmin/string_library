@@ -78,4 +78,10 @@ void printWord(word_descriptor_t word);
 void printWordsInReverseOrder(char* string);
 
 
+int countPalindromes(char* string);
+
+
+
+
+
 #endif //PROJECT_TASKS_H
