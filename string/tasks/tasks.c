@@ -486,7 +486,7 @@ WordBeforeFirstWordWithAReturnCode getWordBeforeFirstWordInBothStr(
 }
 
 // task17
-void removePalindromes(char* string) {
+void removePalindromes(char *string) {
     getBagOfWords(string, &bag1);
     char *write_ptr = _string_buffer;
 
@@ -500,5 +500,31 @@ void removePalindromes(char* string) {
     *copy(_string_buffer, --write_ptr, string) = '\0';
 }
 
+// task18
+void addWordsToShorterStr(char *string1, char *string2) {
+    getBagOfWords(string1, &bag1);
+    getBagOfWords(string2, &bag2);
+    char *write_ptr = _string_buffer;
+
+    if (bag1.size > bag2.size) {
+        for (size_t i = bag2.size; i < bag1.size; i++) {
+            *(write_ptr++) = ' ';
+
+            wordDescriptorToString(bag1.words[i], write_ptr);
+            write_ptr += bag1.words[i].end - bag1.words[i].begin;
+        }
+
+        *copy(_string_buffer, write_ptr, getEndOfString(string2)) = '\0';
+    } else if (bag2.size > bag1.size) {
+        for (size_t i = bag1.size; i < bag2.size; i++) {
+            *(write_ptr++) = ' ';
+
+            wordDescriptorToString(bag2.words[i], write_ptr);
+            write_ptr += bag2.words[i].end - bag2.words[i].begin;
+        }
+
+        *copy(_string_buffer, write_ptr, getEndOfString(string1)) = '\0';
+    }
+}
 
 

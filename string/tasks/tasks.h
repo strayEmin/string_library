@@ -112,4 +112,7 @@ WordBeforeFirstWordWithAReturnCode getWordBeforeFirstWordInBothStr(
 void removePalindromes(char* string);
 
 
+void addWordsToShorterStr(char *string1, char *string2);
+
+
 #endif //PROJECT_TASKS_H

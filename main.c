@@ -310,6 +310,26 @@ void test_removePalindromes() {
 }
 
 
+void test_addWordsToShorterStr() {
+    char s1_1[] = "";
+    char s1_2[] = "";
+    char s2_1[] = "aaaa bbb cccc";
+    char s2_2[] = "im so tired";
+    char s3_1[] = "im so tired";
+    char s3_2[] = "so";
+
+    addWordsToShorterStr(s1_1, s1_2);
+    addWordsToShorterStr(s2_1, s2_2);
+    addWordsToShorterStr(s3_1, s3_2);
+
+    ASSERT_STRING(s1_1, "");
+    ASSERT_STRING(s1_2, "");
+    ASSERT_STRING(s2_1, "aaaa bbb cccc");
+    ASSERT_STRING(s2_2, "im so tired");
+    ASSERT_STRING(s3_2, "so so tired");
+}
+
+
 void test_tasks() {
     test_removeNonLetters();
     test_removeExtraSpaces();
@@ -327,6 +347,7 @@ void test_tasks() {
     test_hasStrWordsFromEqualSymbols();
     test_getStrFromWordsNotEqualToTheLast();
     test_removePalindromes();
+    test_addWordsToShorterStr();
 }
 
 
