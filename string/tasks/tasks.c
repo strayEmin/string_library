@@ -485,5 +485,20 @@ WordBeforeFirstWordWithAReturnCode getWordBeforeFirstWordInBothStr(
     return EMPTY_STRING;
 }
 
+// task17
+void removePalindromes(char* string) {
+    getBagOfWords(string, &bag1);
+    char *write_ptr = _string_buffer;
+
+    for (int i = 0; i < bag1.size; i++)
+        if (!_isPalindrome(bag1.words[i].begin, bag1.words[i].end)) {
+            wordDescriptorToString(bag1.words[i], write_ptr);
+            write_ptr += bag1.words[i].end - bag1.words[i].begin;
+            *(write_ptr++) = ' ';
+        }
+
+    *copy(_string_buffer, --write_ptr, string) = '\0';
+}
+
 
 

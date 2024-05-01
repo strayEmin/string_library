@@ -109,5 +109,7 @@ void getStrFromWordsNotEqualToTheLast(char* string, char *result);
 WordBeforeFirstWordWithAReturnCode getWordBeforeFirstWordInBothStr(
         char *string, char *word, word_descriptor_t *word_dst);
 
+void removePalindromes(char* string);
+
 
 #endif //PROJECT_TASKS_H

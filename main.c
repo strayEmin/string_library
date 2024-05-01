@@ -298,6 +298,18 @@ void test_getStrFromWordsNotEqualToTheLast() {
 }
 
 
+void test_removePalindromes() {
+    char s1[] = "potop for ded gtxt";
+    char s2[] = "aaba bbab ccbc";
+
+    removePalindromes(s1);
+    removePalindromes(s2);
+
+    ASSERT_STRING("for gtxt", s1);
+    ASSERT_STRING("aaba bbab ccbc", s2);
+}
+
+
 void test_tasks() {
     test_removeNonLetters();
     test_removeExtraSpaces();
@@ -314,6 +326,7 @@ void test_tasks() {
     test_hasStringEqualWords();
     test_hasStrWordsFromEqualSymbols();
     test_getStrFromWordsNotEqualToTheLast();
+    test_removePalindromes();
 }
 
 
