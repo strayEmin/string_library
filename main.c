@@ -199,6 +199,22 @@ void test_countPalindromes() {
 }
 
 
+void test_shuffleWords() {
+    char s1[MAX_STRING_SIZE];
+    char s2[MAX_STRING_SIZE];
+    char s3[MAX_STRING_SIZE];
+
+    shuffleWords("Baby King", "Metal Slayer", s1);
+    shuffleWords("a c e", "b d", s2);
+    shuffleWords("1 3 5", "2 4 6 7 8 9", s3);
+
+    ASSERT_STRING("Baby Metal King Slayer", s1);
+    ASSERT_STRING("a b c d e", s2);
+    ASSERT_STRING("1 2 3 4 5 6 7 8 9", s3);
+}
+
+
+
 void test_tasks() {
     test_removeNonLetters();
     test_removeExtraSpaces();
@@ -208,6 +224,7 @@ void test_tasks() {
     test_areWordsSorted();
     test_printWordsInReverseOrder();
     test_countPalindromes();
+    test_shuffleWords();
 }
 
 

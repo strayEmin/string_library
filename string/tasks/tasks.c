@@ -202,6 +202,7 @@ static bool _isPalindrome(char *begin, char *end) {
     return true;
 }
 
+
 int countPalindromes(char* string) {
     int count = 0;
     char* search_ptr = string;
@@ -217,3 +218,32 @@ int countPalindromes(char* string) {
 
     return count;
 }
+
+//task9
+void shuffleWords(char* s1, char* s2, char* destination) {
+    word_descriptor_t word1, word2;
+    bool is_word_1_found, is_word_2_found;
+    char* begin_search_1 = s1;
+    char* begin_search_2 = s2;
+    char* dst = destination;
+
+    while ((is_word_1_found = getWord(begin_search_1, &word1)),
+            (is_word_2_found = getWord(begin_search_2, &word2)),
+            is_word_1_found || is_word_2_found) {
+        if (is_word_1_found) {
+            dst = copy(word1.begin, word1.end, dst);
+            *dst++ = ' ';
+            begin_search_1 = word1.end;
+        }
+
+        if (is_word_2_found) {
+            dst = copy(word2.begin, word2.end, dst);
+            *dst++ = ' ';
+            begin_search_2 = word2.end;
+        }
+    }
+
+    *(dst - (dst != destination)) = '\0';
+}
+
+
