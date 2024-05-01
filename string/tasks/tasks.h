@@ -60,10 +60,13 @@ void lettersToStartDigitsToEnd(word_descriptor_t word);
 void replaceDigitsWithSpaces(char *string);
 
 
-bool twoWordsAreEqual(word_descriptor_t word1, word_descriptor_t word2);
+int wordscmp(word_descriptor_t word1, word_descriptor_t word2);
 
 
 void replace(char *string, char *replaceable, char *replacement);
+
+
+bool areWordsSorted(char* string);
 
 
 #endif //PROJECT_TASKS_H

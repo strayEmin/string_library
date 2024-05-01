@@ -90,16 +90,13 @@ void replaceDigitsWithSpaces(char *string) {
 }
 
 // task5
-bool twoWordsAreEqual(word_descriptor_t word1, word_descriptor_t word2) {
-    while ((*word1.begin != ' ' || *word2.begin != ' ') && (*word1.begin !=
-                                                            '\0' && *word2.begin != '\0')) {
-        if (*word1.begin != *word2.begin != '\0') {
-            return 0;
-        }
-        word1.begin++;
-        word2.begin++;
-    }
-    return word1.begin == word1.end && word2.begin == word2.end;
+int wordscmp(word_descriptor_t word1, word_descriptor_t word2) {
+    char w1[word1.end - word1.begin + 1];
+    char w2[word2.end - word2.begin + 1];
+    *copy(word1.begin, word1.end, w1) = '\0';
+    *copy(word2.begin, word2.end, w2) = '\0';
+
+    return strcmp_(w1, w2);
 }
 
 
@@ -123,7 +120,7 @@ void replace(char *string, char *replaceable, char *replacement) {
     while (getWord(read_ptr, &cur_word)) {
         write_ptr = copy(read_ptr, cur_word.begin, write_ptr);
 
-        if (twoWordsAreEqual(cur_word, replaceable_word)) {
+        if (wordscmp(cur_word, replaceable_word) == 0) {
             write_ptr = copy(replacement_word.begin, replacement_word.end, write_ptr);
         } else {
             write_ptr = copy(cur_word.begin, cur_word.end, write_ptr);
@@ -136,4 +133,21 @@ void replace(char *string, char *replaceable, char *replacement) {
 }
 
 //task6
+bool areWordsSorted(char* string) {
+    word_descriptor_t previous_word;
+
+    if (getWord(string, &previous_word)) {
+        word_descriptor_t current_word;
+
+        while (getWord(previous_word.end, &current_word)) {
+            if (wordscmp(previous_word, current_word) > 0) {
+                return false;
+            }
+
+            previous_word = current_word;
+        }
+    }
+
+    return true;
+}
 

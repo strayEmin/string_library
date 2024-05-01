@@ -163,12 +163,34 @@ void test_replace() {
 }
 
 
+void assertTrue(bool expression, char const *fileName, char const *funcName,
+                int line) {
+    if (expression == false) {
+        fprintf(stderr, "File %s\n", fileName);
+        fprintf(stderr, "%s - failed on line %d\n", funcName, line);
+    } else
+        fprintf(stderr, "%s - OK\n", funcName);
+}
+
+#define ASSERT_TRUE(expression) assertTrue(expression, __FILE__, __func__, __LINE__)
+
+
+void test_areWordsSorted() {
+    char s1[] = "abcdf abcde";
+    ASSERT_TRUE(!areWordsSorted(s1));
+
+    char s2[] = "";
+    ASSERT_TRUE(areWordsSorted(s2));
+}
+
+
 void test_tasks() {
     test_removeNonLetters();
     test_removeExtraSpaces();
     test_lettersToStartDigitsToEnd();
     test_replaceDigitsWithSpaces();
     test_replace();
+    test_areWordsSorted();
 }
 
 
