@@ -273,9 +273,28 @@ void test_hasStrWordsFromEqualSymbols() {
     char string2[] = "- Ho Ho Hooo!!";
     char string3[] = "Eva zero eroz";
 
-    ASSERT_TRUE(!hasStringEqualWords(string1));
-    ASSERT_TRUE(hasStringEqualWords(string2));
-    ASSERT_TRUE(!hasStringEqualWords(string3));
+    ASSERT_TRUE(!hasStrWordsFromEqualSymbols(string1));
+    ASSERT_TRUE(hasStrWordsFromEqualSymbols(string2));
+    ASSERT_TRUE(hasStrWordsFromEqualSymbols(string3));
+}
+
+
+void test_getStrFromWordsNotEqualToTheLast() {
+    char s2[] = "HO HO HO HO";
+    char s3[] = "Chainsaw Man";
+    char s4[] = "aaa bbb ccc aaa";
+
+    char res2[MAX_STRING_SIZE + 1];
+    char res3[MAX_STRING_SIZE + 1];
+    char res4[MAX_STRING_SIZE + 1];
+
+    getStrFromWordsNotEqualToTheLast(s2, res2);
+    getStrFromWordsNotEqualToTheLast(s3, res3);
+    getStrFromWordsNotEqualToTheLast(s4, res4);
+
+    ASSERT_STRING(res2, "");
+    ASSERT_STRING(res3, "Chainsaw");
+    ASSERT_STRING(res4, "bbb ccc");
 }
 
 
@@ -294,6 +313,7 @@ void test_tasks() {
     test_getLastWordInFirstStringInSecondString();
     test_hasStringEqualWords();
     test_hasStrWordsFromEqualSymbols();
+    test_getStrFromWordsNotEqualToTheLast();
 }
 
 

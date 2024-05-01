@@ -331,7 +331,7 @@ void printWordBeforeFirstWordWithA(char *s) {
 
 // task12
 static void wordDescriptorToString(word_descriptor_t word, char *destination) {
-    copy(word.begin, word.end, destination);
+    *copy(word.begin, word.end, destination);
 }
 
 
@@ -356,16 +356,14 @@ char* getLastWordInFirstStringInSecondString(char *s1, char *s2) {
 
 
 //task 13
-bool hasStringEqualWords(char* string) {
+bool hasStringEqualWords(char *string) {
     getBagOfWords(string, &bag1);
 
-    for (int i = 0; i < bag1.size; i++) {
-        for (int j = i + 1; j < bag1.size; j++) {
-            if (wordscmp(bag1.words[i], bag1.words[j]) == 0) {
+    for (int i = 0; i < bag1.size; i++)
+        for (int j = i + 1; j < bag1.size; j++)
+            if (wordscmp(bag1.words[i], bag1.words[j]) == 0)
                 return true;
-            }
-        }
-    }
+
     return false;
 }
 
@@ -375,7 +373,7 @@ static int wordcompare(const void *left, const void *right) {
 }
 
 
-static int charcompare(const void* left, const void* right) {
+static int charcompare(const void *left, const void *right) {
     return *(char *)left - *(char *)right;
 }
 
@@ -397,7 +395,7 @@ static void removeAdjacentEqualLettersInWord(word_descriptor_t *word) {
 }
 
 
-bool hasStrWordsFromEqualSymbols(char* string) {
+bool hasStrWordsFromEqualSymbols(char *string) {
     *copy(string, string + strlen_(string), _string_buffer) = '\0';
     getBagOfWords(_string_buffer, &bag1);
 
@@ -415,6 +413,31 @@ bool hasStrWordsFromEqualSymbols(char* string) {
             return true;
 
     return false;
+}
+
+
+void getStrFromWordsNotEqualToTheLast(char* string, char *result) {
+    getBagOfWords(string, &bag1);
+    char *write_ptr = result;
+
+    if (bag1.size == 0)
+        return;
+
+    for (int i = 0; i < bag1.size - 1; i++) {
+        if (wordscmp(bag1.words[i], bag1.words[bag1.size - 1]) != 0) {
+            wordDescriptorToString(bag1.words[i], write_ptr);
+            write_ptr += bag1.words[i].end - bag1.words[i].begin;
+            *(write_ptr++) = ' ';
+        }
+    }
+
+    if (write_ptr == result) {
+        *write_ptr = '\0';
+        
+        return;
+    }
+
+    *(--write_ptr) = '\0';
 }
 
 

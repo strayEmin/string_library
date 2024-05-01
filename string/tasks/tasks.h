@@ -103,5 +103,7 @@ bool hasStringEqualWords(char* string);
 bool hasStrWordsFromEqualSymbols(char* string);
 
 
+void getStrFromWordsNotEqualToTheLast(char* string, char *result);
+
 
 #endif //PROJECT_TASKS_H
