@@ -69,4 +69,13 @@ void replace(char *string, char *replaceable, char *replacement);
 bool areWordsSorted(char* string);
 
 
+void getBagOfWords(char *begin_search, bag_of_words_t *bag);
+
+
+void printWord(word_descriptor_t word);
+
+
+void printWordsInReverseOrder(char* string);
+
+
 #endif //PROJECT_TASKS_H

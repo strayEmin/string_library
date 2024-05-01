@@ -3,6 +3,8 @@
 
 
 char _string_buffer[MAX_STRING_SIZE + 1];
+bag_of_words_t bag1;
+bag_of_words_t bag2;
 
 
 static void clearStringBuff() {
@@ -24,7 +26,7 @@ void removeNonLetters(char *s) {
 }
 
 // task2
-void removeExtraSpaces(char* source) {
+void removeExtraSpaces(char *source) {
     char* write_pointer = source;
     while (*source != '\0') {
         if (!isspace(*source) || (isspace(*source) && !isspace(*(source - 1)))) {
@@ -51,7 +53,7 @@ int getWord(char *begin_search, word_descriptor_t* word) {
 }
 
 
-void forEachWord(char* string, void (*function)(word_descriptor_t)) {
+void forEachWord(char *string, void (*function)(word_descriptor_t)) {
     char* search_point = string;
     word_descriptor_t word;
 
@@ -133,7 +135,7 @@ void replace(char *string, char *replaceable, char *replacement) {
 }
 
 //task6
-bool areWordsSorted(char* string) {
+bool areWordsSorted(char *string) {
     word_descriptor_t previous_word;
 
     if (getWord(string, &previous_word)) {
@@ -149,5 +151,34 @@ bool areWordsSorted(char* string) {
     }
 
     return true;
+}
+
+// task7
+void getBagOfWords(char *begin_search, bag_of_words_t *bag) {
+    size_t word_index = 0;
+
+    while (getWord(begin_search, bag->words + word_index)) {
+        begin_search = bag->words[word_index].end;
+        word_index++;
+    }
+
+    bag->size = word_index;
+}
+
+
+void printWord(word_descriptor_t word) {
+    while (word.begin != word.end) {
+        putchar(*word.begin);
+        word.begin++;
+    }
+}
+
+void printWordsInReverseOrder(char* string) {
+    getBagOfWords(string, &bag1);
+
+    for (size_t i = bag1.size - 1; i != -1; i--) {
+        printWord(bag1.words[i]);
+        putchar('\n');
+    }
 }
 

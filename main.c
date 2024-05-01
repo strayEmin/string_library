@@ -184,6 +184,13 @@ void test_areWordsSorted() {
 }
 
 
+void test_printWordsInReverseOrder() {
+    printf("the original line - %s\n"
+           "result:\n", str4);
+    printWordsInReverseOrder(str4);
+}
+
+
 void test_tasks() {
     test_removeNonLetters();
     test_removeExtraSpaces();
@@ -191,6 +198,7 @@ void test_tasks() {
     test_replaceDigitsWithSpaces();
     test_replace();
     test_areWordsSorted();
+    test_printWordsInReverseOrder();
 }
 
 
