@@ -4,6 +4,7 @@
 #define MAX_STRING_SIZE 100
 #define MAX_N_WORDS_IN_STRING 100
 #define MAX_WORD_SIZE 20
+#define ASCII_SYMBOLS_AMOUNT 256
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -113,6 +114,9 @@ void removePalindromes(char* string);
 
 
 void addWordsToShorterStr(char *string1, char *string2);
+
+
+bool isStringContainedAllSymbolOfWords(char *src, char *word);
 
 
 #endif //PROJECT_TASKS_H

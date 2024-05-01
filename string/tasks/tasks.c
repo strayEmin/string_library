@@ -527,4 +527,28 @@ void addWordsToShorterStr(char *string1, char *string2) {
     }
 }
 
+// task19
+static void getSymbolSet(char *src, bool letters[]) {
+    while (*src != '\0') {
+        letters[*src] = true;
+        src++;
+    }
+}
+
+
+bool isStringContainedAllSymbolOfWords(char *src, char *word) {
+    bool letters[ASCII_SYMBOLS_AMOUNT] = {false};
+
+    getSymbolSet(word, letters);
+
+    while (*src != '\0') {
+        if (!letters[*src]) {
+            return false;
+        }
+
+        src++;
+    }
+
+    return true;
+}
 
