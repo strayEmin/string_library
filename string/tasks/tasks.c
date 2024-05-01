@@ -85,8 +85,8 @@ void replaceDigitsWithSpaces(char *string) {
 
         buffer_begin++;
     }
+
     *string = '\0';
-    clearStringBuff();
 }
 
 // task5
@@ -113,7 +113,7 @@ void replace(char *string, char *replaceable, char *replacement) {
     if (replaceable_length > replacement_length) {
         read_ptr = string;
     } else {
-        copy(string, string + strlen_(string), _string_buffer);
+        *copy(string, string + strlen_(string), _string_buffer) = '\0';
         read_ptr = _string_buffer;
     }
 
@@ -133,6 +133,7 @@ void replace(char *string, char *replaceable, char *replacement) {
     }
 
     *write_ptr = '\0';
-    clearStringBuff();
 }
+
+//task6
 
