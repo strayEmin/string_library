@@ -246,4 +246,19 @@ void shuffleWords(char* s1, char* s2, char* destination) {
     *(dst - (dst != destination)) = '\0';
 }
 
+//task10
+void reverseWordsOrder(char* string) {
+    getBagOfWords(string, &bag1);
+    char *result = _string_buffer;
 
+    for (size_t i = bag1.size; i > 0; i--) {
+        char *s = bag1.words[i - 1].begin;
+        while (s != bag1.words[i - 1].end)
+            *(result++) = *s++;
+
+        if (i != 1)
+            *(result++) = ' ';
+    }
+
+    *copy(_string_buffer, result, string) = '\0';
+}

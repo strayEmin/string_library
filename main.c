@@ -214,6 +214,20 @@ void test_shuffleWords() {
 }
 
 
+void test_reverseWordsOrder() {
+    char string1[] = "";
+    char string2[] = "hearts our give Let's";
+    char string3[] = "1 2 3";
+
+    reverseWordsOrder(string1);
+    reverseWordsOrder(string2);
+    reverseWordsOrder(string3);
+
+    ASSERT_STRING("", string1);
+    ASSERT_STRING("Let's give our hearts", string2);
+    ASSERT_STRING("3 2 1", string3);
+}
+
 
 void test_tasks() {
     test_removeNonLetters();
@@ -225,6 +239,7 @@ void test_tasks() {
     test_printWordsInReverseOrder();
     test_countPalindromes();
     test_shuffleWords();
+    test_reverseWordsOrder();
 }
 
 

@@ -84,4 +84,6 @@ int countPalindromes(char* string);
 void shuffleWords(char* s1, char* s2, char* destination);
 
 
+void reverseWordsOrder(char* string);
+
 #endif //PROJECT_TASKS_H
