@@ -257,6 +257,17 @@ void test_getLastWordInFirstStringInSecondString() {
 }
 
 
+void test_hasStringEqualWords() {
+    char string1[] = "";
+    char string2[] = "- Ho Ho Hooo!!";
+    char string3[] = "Eva zero two";
+
+    ASSERT_TRUE(!hasStringEqualWords(string1));
+    ASSERT_TRUE(hasStringEqualWords(string2));
+    ASSERT_TRUE(!hasStringEqualWords(string3));
+}
+
+
 void test_tasks() {
     test_removeNonLetters();
     test_removeExtraSpaces();
@@ -270,6 +281,7 @@ void test_tasks() {
     test_reverseWordsOrder();
     test_getWordBeforeFirstWordWithA();
     test_getLastWordInFirstStringInSecondString();
+    test_hasStringEqualWords();
 }
 
 

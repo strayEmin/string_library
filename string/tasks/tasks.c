@@ -354,3 +354,18 @@ char* getLastWordInFirstStringInSecondString(char *s1, char *s2) {
     return "";
 }
 
+
+//task 13
+bool hasStringEqualWords(char* string) {
+    getBagOfWords(string, &bag1);
+
+    for (int i = 0; i < bag1.size; i++) {
+        for (int j = i + 1; j < bag1.size; j++) {
+            if (wordscmp(bag1.words[i], bag1.words[j]) == 0) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
