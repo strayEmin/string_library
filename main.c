@@ -229,6 +229,21 @@ void test_reverseWordsOrder() {
 }
 
 
+void test_getWordBeforeFirstWordWithA() {
+    word_descriptor_t word;
+    char s1[] = "";
+    char s2[] = "ABC";
+    char s3[] = "BC DSS A DS AD";
+    char s4[] = "B Q WE YR OW IUWR";
+
+    ASSERT_TRUE(getWordBeforeFirstWordWithA(s1, &word) == EMPTY_STRING);
+    ASSERT_TRUE(getWordBeforeFirstWordWithA(s2, &word) == FIRST_WORD_WITH_A);
+    ASSERT_TRUE(getWordBeforeFirstWordWithA(s3, &word) == WORD_FOUND);
+    ASSERT_TRUE(getWordBeforeFirstWordWithA(s4, &word) == NOT_FOUND_A_WORD_WITH_A);
+}
+
+
+
 void test_tasks() {
     test_removeNonLetters();
     test_removeExtraSpaces();
@@ -240,6 +255,7 @@ void test_tasks() {
     test_countPalindromes();
     test_shuffleWords();
     test_reverseWordsOrder();
+    test_getWordBeforeFirstWordWithA();
 }
 
 

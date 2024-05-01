@@ -48,10 +48,10 @@ void removeExtraSpaces(char *s);
 int getWord(char *begin_search, word_descriptor_t *word);
 
 
-int getWordReverse(char* search_end, char* search_start, word_descriptor_t* word);
+int getWordReverse(char *search_end, char *search_start, word_descriptor_t *word);
 
 
-void forEachWord(char* string, void (*function)(word_descriptor_t));
+void forEachWord(char *string, void (*function)(word_descriptor_t));
 
 
 void lettersToStartDigitsToEnd(word_descriptor_t word);
@@ -66,7 +66,7 @@ int wordscmp(word_descriptor_t word1, word_descriptor_t word2);
 void replace(char *string, char *replaceable, char *replacement);
 
 
-bool areWordsSorted(char* string);
+bool areWordsSorted(char *string);
 
 
 void getBagOfWords(char *begin_search, bag_of_words_t *bag);
@@ -75,15 +75,23 @@ void getBagOfWords(char *begin_search, bag_of_words_t *bag);
 void printWord(word_descriptor_t word);
 
 
-void printWordsInReverseOrder(char* string);
+void printWordsInReverseOrder(char *string);
 
 
-int countPalindromes(char* string);
+int countPalindromes(char *string);
 
 
-void shuffleWords(char* s1, char* s2, char* destination);
+void shuffleWords(char *s1, char *s2, char *destination);
 
 
-void reverseWordsOrder(char* string);
+void reverseWordsOrder(char *string);
+
+
+WordBeforeFirstWordWithAReturnCode getWordBeforeFirstWordWithA(
+        char *s, word_descriptor_t *w);
+
+
+void printWordBeforeFirstWordWithA(char *s);
+
 
 #endif //PROJECT_TASKS_H

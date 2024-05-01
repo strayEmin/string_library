@@ -203,7 +203,7 @@ static bool _isPalindrome(char *begin, char *end) {
 }
 
 
-int countPalindromes(char* string) {
+int countPalindromes(char *string) {
     int count = 0;
     char* search_ptr = string;
     word_descriptor_t word;
@@ -220,7 +220,7 @@ int countPalindromes(char* string) {
 }
 
 //task9
-void shuffleWords(char* s1, char* s2, char* destination) {
+void shuffleWords(char *s1, char *s2, char *destination) {
     word_descriptor_t word1, word2;
     bool is_word_1_found, is_word_2_found;
     char* begin_search_1 = s1;
@@ -262,3 +262,71 @@ void reverseWordsOrder(char* string) {
 
     *copy(_string_buffer, result, string) = '\0';
 }
+
+// task11
+static bool isSymbolInWord(word_descriptor_t word, const char symbol) {
+    return find(word.begin, word.end, symbol) != word.end;
+}
+
+
+WordBeforeFirstWordWithAReturnCode getWordBeforeFirstWordWithA(
+        char *string, word_descriptor_t *word) {
+    word_descriptor_t previous_word;
+
+    if (getWord(string, &previous_word)) {
+        if (!isSymbolInWord(previous_word, 'A') &&
+        !isSymbolInWord(previous_word, 'a')) {
+            string = previous_word.end;
+            word_descriptor_t next_word;
+
+            while (getWord(string, &next_word)) {
+                if (isSymbolInWord(previous_word, 'A') ||
+                    isSymbolInWord(previous_word, 'a')) {
+                    *word = previous_word;
+                    return WORD_FOUND;
+                }
+
+                previous_word = next_word;
+                string = previous_word.end;
+            }
+
+            return NOT_FOUND_A_WORD_WITH_A;
+        }
+
+        return FIRST_WORD_WITH_A;
+    }
+
+    return EMPTY_STRING;
+}
+
+
+void printWordBeforeFirstWordWithA(char *s) {
+    word_descriptor_t word;
+    WordBeforeFirstWordWithAReturnCode code = getWordBeforeFirstWordWithA(s,&word);
+    if (code == EMPTY_STRING)
+        printf("The string is empty.\n");
+    else if (code == NOT_FOUND_A_WORD_WITH_A)
+        printf("The letter 'a' or 'A' was not founded.\n");
+    else if (code == FIRST_WORD_WITH_A)
+        printf("The letter 'a' or 'A' was founded in first word.\n");
+    else {
+        char *beginSearch = s;
+        char result[MAX_WORD_SIZE];
+
+        while (getWord(beginSearch, &word)) {
+            copy(word.begin, word.end, result);
+
+            getWord(word.end, &word);
+            if (find(word.begin, word.end, 'A') != word.end ||
+                find(word.begin, word.end, 'a') != word.end) {
+                printf("%s\n", result);
+
+                return;
+            }
+
+            beginSearch = word.begin;
+        }
+    }
+}
+
+
