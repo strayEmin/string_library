@@ -369,3 +369,52 @@ bool hasStringEqualWords(char* string) {
     return false;
 }
 
+// task14
+static int wordcompare(const void *left, const void *right) {
+    return wordscmp(*(word_descriptor_t *)left, *(word_descriptor_t *)right);
+}
+
+
+static int charcompare(const void* left, const void* right) {
+    return *(char *)left - *(char *)right;
+}
+
+
+static void removeAdjacentEqualLettersInWord(word_descriptor_t *word) {
+    char *begin_dst = word->begin;
+    char *begin_source = word->begin;
+
+    while (begin_source != word->end) {
+        if (*begin_source != *(begin_source + 1)) {
+            *begin_dst = *begin_source;
+            begin_dst++;
+        }
+
+        begin_source++;
+    }
+
+    word->end = begin_dst;
+}
+
+
+bool hasStrWordsFromEqualSymbols(char* string) {
+    *copy(string, string + strlen_(string), _string_buffer) = '\0';
+    getBagOfWords(_string_buffer, &bag1);
+
+    for (size_t i = 0; i < bag1.size; i++) {
+        qsort(bag1.words[i].begin, bag1.words[i].end - bag1.words[i].begin,
+              sizeof(char), charcompare);
+
+        removeAdjacentEqualLettersInWord(&bag1.words[i]);
+    }
+
+    qsort(bag1.words, bag1.size, sizeof(*bag1.words), wordcompare);
+
+    for (size_t i = 1; i < bag1.size; i++)
+        if (wordscmp(bag1.words[i], bag1.words[i - 1]) == 0)
+            return true;
+
+    return false;
+}
+
+

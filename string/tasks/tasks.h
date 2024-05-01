@@ -100,4 +100,8 @@ char* getLastWordInFirstStringInSecondString(char *s1, char *s2);
 bool hasStringEqualWords(char* string);
 
 
+bool hasStrWordsFromEqualSymbols(char* string);
+
+
+
 #endif //PROJECT_TASKS_H
