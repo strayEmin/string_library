@@ -243,6 +243,19 @@ void test_getWordBeforeFirstWordWithA() {
 }
 
 
+void test_getLastWordInFirstStringInSecondString() {
+    char string1_1[] = "";
+    char string1_2[] = "";
+    char string2_1[] = "One Punch Man";
+    char string2_2[] = "One Man One Bullet";
+    char string3_1[] = "1 2 3";
+    char string3_2[] = "4 5";
+
+    ASSERT_STRING(getLastWordInFirstStringInSecondString(string1_1, string1_2), "");
+    ASSERT_STRING(getLastWordInFirstStringInSecondString(string2_1, string2_2), "Man");
+    ASSERT_STRING(getLastWordInFirstStringInSecondString(string3_1, string3_2), "");
+}
+
 
 void test_tasks() {
     test_removeNonLetters();
@@ -256,6 +269,7 @@ void test_tasks() {
     test_shuffleWords();
     test_reverseWordsOrder();
     test_getWordBeforeFirstWordWithA();
+    test_getLastWordInFirstStringInSecondString();
 }
 
 

@@ -329,4 +329,28 @@ void printWordBeforeFirstWordWithA(char *s) {
     }
 }
 
+// task12
+static void wordDescriptorToString(word_descriptor_t word, char *destination) {
+    copy(word.begin, word.end, destination);
+}
+
+
+char* getLastWordInFirstStringInSecondString(char *s1, char *s2) {
+    getBagOfWords(s1, &bag1);
+    getBagOfWords(s2, &bag2);
+    char *result = _string_buffer;
+
+    for (int i = bag1.size; i > 0; i--) {
+        for (int j = bag2.size; j > 0; j--) {
+            if (wordscmp(bag1.words[i - 1], bag2.words[j - 1]) == 0) {
+                wordDescriptorToString(bag1.words[i - 1], result);
+                *(result + (bag1.words[i - 1].end - bag1.words[i - 1].begin)) = '\0';
+
+                return result;
+            }
+        }
+    }
+
+    return "";
+}
 
