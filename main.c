@@ -140,10 +140,26 @@ void test_lettersToStartDigitsToEnd() {
 }
 
 
+void test_replaceDigitsWithSpaces(){
+    char string1[] = "";
+    char string2[] = "hell";
+    char string3[] = " sp1ce sp4ce sp0ce";
+
+    replaceDigitsWithSpaces(string1);
+    replaceDigitsWithSpaces(string2);
+    replaceDigitsWithSpaces(string3);
+
+    ASSERT_STRING("", string1);
+    ASSERT_STRING("hell", string2);
+    ASSERT_STRING(" sp ce sp    ce spce", string3);
+}
+
+
 void test_tasks() {
     test_removeNonLetters();
     test_removeExtraSpaces();
     test_lettersToStartDigitsToEnd();
+    test_replaceDigitsWithSpaces();
 }
 
 

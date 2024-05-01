@@ -42,6 +42,7 @@ int getWord(char *begin_search, word_descriptor_t* word) {
     return 1;
 }
 
+
 void forEachWord(char* string, void (*function)(word_descriptor_t)) {
     char* search_point = string;
     word_descriptor_t word;
@@ -61,5 +62,26 @@ void lettersToStartDigitsToEnd(word_descriptor_t word) {
     copyIf(_string_buffer, string_buffer_end, digits_end, isdigit);
 }
 
+// task4
+void replaceDigitsWithSpaces(char *string) {
+    char* read_ptr = string;
+    char* write_ptr = _string_buffer;
 
+    while (*read_ptr != '\0') {
+        if (isdigit(*read_ptr)) {
+            int digit = *read_ptr - '0';
+
+            for (int i = 0; i < digit; i++) {
+                *write_ptr = ' ';
+                write_ptr++;
+            }
+        } else {
+            *write_ptr = *read_ptr;
+            write_ptr++;
+        }
+        read_ptr++;
+    }
+
+    *copy(_string_buffer, write_ptr, string) = '\0';
+}
 

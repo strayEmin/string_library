@@ -57,4 +57,7 @@ void forEachWord(char* string, void (*function)(word_descriptor_t));
 void lettersToStartDigitsToEnd(word_descriptor_t word);
 
 
+void replaceDigitsWithSpaces(char *string);
+
+
 #endif //PROJECT_TASKS_H
