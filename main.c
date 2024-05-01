@@ -154,12 +154,21 @@ void test_replaceDigitsWithSpaces(){
     ASSERT_STRING(" sp ce sp    ce spce", string3);
 }
 
+void test_replace() {
+    char string1[] = "some test string";
+
+    replace(string1, "test", "replacement");
+
+    ASSERT_STRING("some replacement string", string1);
+}
+
 
 void test_tasks() {
     test_removeNonLetters();
     test_removeExtraSpaces();
     test_lettersToStartDigitsToEnd();
     test_replaceDigitsWithSpaces();
+    test_replace();
 }
 
 
